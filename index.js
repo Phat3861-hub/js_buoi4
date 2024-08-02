@@ -214,3 +214,53 @@ document.getElementById("tinhDiem").onclick = function () {
         Điểm trung bình:${TBC.toPrecision(3)} <br> 
         Xếp loại: ${loai}`;
 };
+
+// cấu trúc điều kiện switch case
+let nguoiDung = "chú";
+// kiểm tra dữ liệu đang có trong biến người dùng, nếu kiểm tra người dùng là Ba thì thông báo cho phép sử dụng, còn nếu là mẹ hoặc chị thì không cho phép
+switch (nguoiDung) {
+  case "Ba":
+    {
+      // case là các trường hợp có thể xảy ra từ biến người dùng
+      console.log("cho phép sử dụng máy tính");
+    }
+    break;
+  case "Mẹ":
+    {
+      console.log("Không cho phép sử dụng");
+    }
+    break;
+  case "chị":
+    {
+      console.log("Không cho phép sử dụng");
+    }
+    break;
+  // default sẽ xử lý các trường hợp xảy ra khi không thuộc bất kỳ case nào
+  default: {
+    console.log("who ?");
+  }
+}
+
+// Một nhà hàng mở quán ăn và yêu cầu viết cho họ 1 chương trình tính số tiền ăn của mỗi khách hàng biết rằng ở đây cung cấp 3 giá trị số người, số tiền, số phần trăm giảm giá. Hãy tính toán với 3 dữ kiện được cung cấp và trả kết quả cho người dùng biết về số tiền thanh toán
+// yêu cầu có sử dụng cấu trúc điều kiện switch case
+// nếu như số lượng khách đủ 3 người thì sẽ bonus giảm thêm 400k còn nếu đủ 5 người thì sẽ bonus giảm thêm 1 tr
+document.getElementById("cost").onclick = function () {
+  let soNguoiAn = document.getElementById("soNguoiAn").value * 1;
+  let soTienAn2 = document.getElementById("soTienAn2").value * 1;
+  let soTienGiamGia = document.getElementById("soTienGiamGia").value * 1;
+  let tongTienSauKhiGiamGia = soTienAn2 * (1 - soTienGiamGia / 100);
+  let bonus = 0;
+  switch (soNguoiAn) {
+    case 3:
+      bonus = 400000;
+      break;
+    case 5:
+      bonus = 1000000;
+      break;
+  }
+  let ketQuaBaiTap = (tongTienSauKhiGiamGia - bonus) / soNguoiAn;
+
+  document.getElementById("ketQuaBaiTap").innerHTML += `
+  <p>Tiền ăn mỗi người sau khi giảm : ${ketQuaBaiTap} </p> 
+  `;
+};
